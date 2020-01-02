@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import errno
-import os
+import os, sys, errno
 import os.path
 
 import requests
@@ -29,7 +28,8 @@ while True:
     overwrite = False
     name = chapter_base + str(i)
     filename = name
-    existing_files = sorted(os.listdir(dirname), key=lambda s: int(s.split('-')[-1]))
+    existing_files = os.listdir(dirname)
+    existing_files.sort(key=lambda s: int(s.rsplit('-')[-1]))
     if filename in existing_files:
         print('already have', filename)
         with open(dirname + filename, 'rb') as f:
@@ -40,7 +40,13 @@ while True:
     
     if not content or overwrite:
         print('getting', filename)
-        content = rs.get(url).content
+        response = rs.get(url)
+        try: 
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e: 
+            print(e)
+            sys.exit()
+        content = response.content
         with open(dirname + filename, 'wb') as f:
             f.write(content)
 
