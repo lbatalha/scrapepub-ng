@@ -29,7 +29,7 @@ while True:
     overwrite = False
     name = chapter_base + str(i)
     filename = name
-    existing_files = os.listdir(dirname)
+    existing_files = sorted(os.listdir(dirname), key=lambda s: int(s.split('-')[-1]))
     if filename in existing_files:
         print('already have', filename)
         with open(dirname + filename, 'rb') as f:
