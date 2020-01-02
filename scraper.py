@@ -1,16 +1,29 @@
 #!/usr/bin/env python3
 
-import os, sys, errno
+import os, sys, errno, argparse
 import os.path
 
-import requests
+import requests, yaml
 from bs4 import BeautifulSoup
 
-url_base = 'http://gravitytales.com/novel/age-of-adepts/'
-chapter_base = 'aoa-chapter-'
-start_chapter = 0
+parser = argparse.ArgumentParser(description='Scraper for Gravitytales')
+parser.add_argument('book', help='book name (from books.yml) to scrape')
+args = parser.parse_args()
 
-dirname = 'raw_aoa/'
+books = None
+book_info = None
+with open('books.yml', 'r') as f:
+  books = yaml.load(f.read(), Loader=yaml.Loader)
+
+for book in books:
+    if args.book in book.keys():
+        book_info = book[args.book]
+
+url_base = book_info['url_base']
+chapter_base = book_info['chapter_base']
+start_chapter = book_info['start_chapter']
+dirname = book_info['raw_dirname']
+
 try:
     os.mkdir(dirname)
 except OSError as e:

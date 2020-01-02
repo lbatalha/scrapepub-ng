@@ -1,0 +1,22 @@
+---
+- aoa:
+    uuid: "ff08be0e-fc84-448e-913e-f65e943f48cb"
+    title: "Age of Adepts"
+    url_base: "https://gravitytales.com/novel/age-of-adepts/"
+    author: "真的老狼 ZhenDeLaoLang (Real Old Wolf)"
+    language: "en"
+    chapter_base: "aoa-chapter-"
+    start_chapter: 0
+    raw_dirname: "raw_aoa/"
+    ebook_filename: "age_of_adepts.epub"
+- csg:
+    uuid: "7d916a5b-81c6-4d3f-a091-4dbf90a20ee4"
+    title: "Chaotic Sword God"
+    url_base: "https://gravitytales.com/novel/chaotic-sword-god/"
+    author: "心星逍遥 Xin Xing Xiao Yao"
+    language: "en"
+    chapter_base: "csg-chapter-"
+    start_chapter: 1
+    raw_dirname: "raw_csg/"
+    ebook_filename: "chaotic_sword_god.epub"
+  

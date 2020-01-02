@@ -1,13 +1,28 @@
 #!/usr/bin/env python
 
-import os
+import os, argparse
+
+import yaml
 
 from bs4 import BeautifulSoup
 from ebooklib import epub
 
 
-ebook_filename = "age_of_adepts.epub"
-dirname = 'raw_aoa/'
+parser = argparse.ArgumentParser(description='Scraper for Gravitytales')
+parser.add_argument('book', help='book name (from books.yml) to scrape')
+args = parser.parse_args()
+
+books = None
+book_info = None
+with open('books.yml', 'r') as f:
+  books = yaml.load(f.read(), Loader=yaml.Loader)
+
+for book in books:
+    if args.book in book.keys():
+        book_info = book[args.book]
+
+ebook_filename = book_info['ebook_filename']
+dirname = book_info['raw_dirname']
 chapter_files = os.listdir(dirname)
 
 
@@ -18,8 +33,6 @@ book.set_identifier('ff08be0e-fc84-448e-913e-f65e943f48cb') # literally just use
 book.set_title('Age of Adepts')
 book.set_language('en')
 book.add_author('真的老狼 ZhenDeLaoLang (Real Old Wolf)', file_as='ZhenDeLaoLang')
-book.add_author('Eris', file_as='Eris', role='English TL', uid='coauthor')
-book.add_author('TsukikageRyu', file_as='TsukikageRyu', role='English Editor', uid='coauthor')
 
 chapters = []
 
