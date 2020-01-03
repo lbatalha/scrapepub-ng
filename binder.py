@@ -29,10 +29,10 @@ chapter_files = os.listdir(dirname)
 book = epub.EpubBook()
 
 # set metadata
-book.set_identifier('ff08be0e-fc84-448e-913e-f65e943f48cb') # literally just used uuidgen
-book.set_title('Age of Adepts')
-book.set_language('en')
-book.add_author('真的老狼 ZhenDeLaoLang (Real Old Wolf)', file_as='ZhenDeLaoLang')
+book.set_identifier('book_info['uuid']') # literally just used uuidgen
+book.set_title('book_info['title']')
+book.set_language('book_info['language']')
+book.add_author('book_info['author']')
 
 chapters = []
 
@@ -50,7 +50,7 @@ for cf in chapter_files:
 
 
 # define Table Of Contents
-book.toc = ((epub.Section('Age of Adepts'),"" ),(epub.Section('Chapters'), chapters ))
+book.toc = ((epub.Section('book_info['title']'),"" ),(epub.Section('Chapters'), chapters ))
         
 
 book.spine = chapters
@@ -60,11 +60,11 @@ book.add_item(epub.EpubNcx())
 book.add_item(epub.EpubNav())
 
 # define CSS style
-style = 'BODY {color: white;}'
-nav_css = epub.EpubItem(uid="style_nav", file_name="style/nav.css", media_type="text/css", content=style)
+# style = 'BODY {color: black;}'
+# nav_css = epub.EpubItem(uid="style_nav", file_name="style/nav.css", media_type="text/css", content=style)
 
-# add CSS file
-book.add_item(nav_css)
+# # add CSS file
+# book.add_item(nav_css)
 
 
 # write to the file
