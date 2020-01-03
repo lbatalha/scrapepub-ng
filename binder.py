@@ -29,10 +29,10 @@ chapter_files = os.listdir(dirname)
 book = epub.EpubBook()
 
 # set metadata
-book.set_identifier('book_info['uuid']') # literally just used uuidgen
-book.set_title('book_info['title']')
-book.set_language('book_info['language']')
-book.add_author('book_info['author']')
+book.set_identifier(book_info['uuid']) # literally just used uuidgen
+book.set_title(book_info['title'])
+book.set_language(book_info['language'])
+book.add_author(book_info['author'])
 
 chapters = []
 
@@ -50,7 +50,7 @@ for cf in chapter_files:
 
 
 # define Table Of Contents
-book.toc = ((epub.Section('book_info['title']'),"" ),(epub.Section('Chapters'), chapters ))
+book.toc = ((epub.Section(book_info['title']),"" ),(epub.Section('Chapters'), chapters ))
         
 
 book.spine = chapters
