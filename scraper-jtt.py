@@ -6,7 +6,7 @@ import os.path
 import requests, yaml
 from bs4 import BeautifulSoup
 
-parser = argparse.ArgumentParser(description='Scraper for Gravitytales')
+parser = argparse.ArgumentParser(description='Scraper for justatranslatortranslations.com')
 parser.add_argument('book', help='book name (from books.yml) to scrape')
 args = parser.parse_args()
 
@@ -37,6 +37,7 @@ url = url_base + chapter_base + str(start_chapter)
 i = start_chapter
 
 while True:
+    #url = top_url + str(i)
     content = None
     overwrite = False
     name = chapter_base + str(i)
@@ -50,25 +51,34 @@ while True:
         if existing_files[-1] == filename:
             print("This is the last file, overwriting")
             overwrite = True
-    
+
     if not content or overwrite:
         print('getting', filename)
+        print(url)
         response = rs.get(url)
-        try: 
+        try:
             response.raise_for_status()
-        except requests.exceptions.HTTPError as e: 
+        except requests.exceptions.HTTPError as e:
             print(e)
             sys.exit()
         content = response.content
         with open(dirname + filename, 'wb') as f:
             f.write(content)
+            print()
 
     soup = BeautifulSoup(content, 'lxml')
-    next_el = soup.find('span', text='Next Chapter')
+    next_el = soup.find('a', text='[Next Chapter]')
+    debug_chapter = soup.find('h1', {"class": "entry-title"}).text.split(' ')[1].rstrip(':')	
+    print(debug_chapter, " ", i)
+    if int(debug_chapter) != i:
+        print("Mismatching Chapter number in document!")
+        sys.exit()
+
     if next_el is None:
         print("No next chapter element found")
         break
     else:
-        url = next_el.find_parent('a')['href']
+        print(next_el)
+        url = next_el['href']
 
     i += 1

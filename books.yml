@@ -12,11 +12,30 @@
 - csg:
     uuid: "7d916a5b-81c6-4d3f-a091-4dbf90a20ee4"
     title: "Chaotic Sword God"
-    url_base: "https://gravitytales.com/novel/chaotic-sword-god/"
+    url_base: "https://justatranslatortranslations.com/csg/"
     author: "心星逍遥 Xin Xing Xiao Yao"
     language: "en"
     chapter_base: "csg-chapter-"
     start_chapter: 1
     raw_dirname: "raw_csg/"
     ebook_filename: "chaotic_sword_god.epub"
-  
+- mga:
+    uuid: "49decb06-90b7-4480-8ec1-736099fad4b8"
+    title: "Martial God Asura"
+    url_base: "https://www.wuxiaworld.com/novel/martial-god-asura/"
+    author: "Kindhearted Bee"
+    language: "en"
+    chapter_base: "mga-chapter-"
+    start_chapter: 1
+    raw_dirname: "raw_mga/"
+    ebook_filename: "martial_god_asura.epub"
+- lotm:
+    uuid: "2b4b03ab-37d3-47fc-9036-bc1af2887c21"
+    title: "Lord Of The Mysteries"
+    url_base: "https://readnovelfull.com"
+    author: "爱潜水的乌贼, Cuttlefish That Loves Diving"
+    language: "en"
+    chapter_base: "/lord-of-the-mysteries/chapter-1-crimson"
+    start_chapter: 1
+    raw_dirname: "raw_lotm/"
+    ebook_filename: "lord_of_the_mysteries.epub"
