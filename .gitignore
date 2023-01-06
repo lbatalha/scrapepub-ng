@@ -131,3 +131,13 @@ dmypy.json
 # ebook output
 raw*/
 *.epub
+
+# font ocr stuff
+*.ttf
+*.ttx
+*.otf
+*.png
+*.jpeg
+
+# vscode
+.vscode/

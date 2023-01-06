@@ -39,3 +39,15 @@
     start_chapter: 1
     raw_dirname: "raw_lotm/"
     ebook_filename: "lord_of_the_mysteries.epub"
+- mstv:
+    uuid: "046ceb47-8115-495a-89ae-2c2b00c2d0ba"
+    title: "Mistakenly Saving the Villain"
+    url_base: "https://chrysanthemumgarden.com/novel-tl/misvil/"
+    author: "凤羽涅, Feng Yu Nie"
+    language: "en"
+    chapter_base: "misvil-"
+    start_chapter: 1
+    raw_dirname: "raw_cg/"
+    ebook_filename: "mistakenly_saving_the_villain.epub"
+    base_alpha: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    cipher_alpha: "tonquerzlawicvfjpsyhgdmkbxJKABRUDQZCTHFVLIWNEYPSXGOM"
