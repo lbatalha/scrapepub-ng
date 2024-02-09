@@ -4,3 +4,4 @@ ebooklib
 pyyaml
 selenium
 natsort
+pyicu

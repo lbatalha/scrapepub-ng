@@ -5,7 +5,7 @@ import yaml
 
 from bs4 import BeautifulSoup
 from ebooklib import epub
-
+from natsort import os_sorted
 
 parser = argparse.ArgumentParser(description='Scraper for chrysanthemumgarden')
 parser.add_argument('book', help='book name (from books.yml) to scrape')
@@ -35,7 +35,7 @@ elif alpha_configured != 0:
 
 ebook_filename = book_info['ebook_filename']
 dirname = book_info['raw_dirname']
-chapter_files = os.listdir(dirname)
+chapter_files = os_sorted(os.listdir(dirname))
 
 
 book = epub.EpubBook()
@@ -97,4 +97,3 @@ book.add_item(epub.EpubNav())
 
 # write to the file
 epub.write_epub(ebook_filename, book, {})
-
