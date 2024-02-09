@@ -51,3 +51,14 @@
     ebook_filename: "mistakenly_saving_the_villain.epub"
     base_alpha: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     cipher_alpha: "tonquerzlawicvfjpsyhgdmkbxJKABRUDQZCTHFVLIWNEYPSXGOM"
+- ri:
+    uuid: "f8cfb9c2-5c4c-4a3a-8544-3dc1c776d87e"
+    title: "Renegade Immortal"
+    url_base: "https://www.wuxiaworld.com/novel/renegade-immortal/"
+    author: "Er Gen"
+    language: "en"
+    chapter_base: "rge-chapter-"
+    start_chapter: 1
+    end_chapter: 2088
+    raw_dirname: "raw_ri/"
+    ebook_filename: "renegade_immortal.epub"
