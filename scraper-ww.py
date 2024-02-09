@@ -59,21 +59,10 @@ firefox_profile = FirefoxProfile('/home/lbatalha/.mozilla/firefox/9pyn999h.defau
 #firefox_profile.set_preference()
 
 options = webdriver.FirefoxOptions()
-#options.add_argument("--headless")
 options.page_load_strategy = "none"
 options.profile = firefox_profile
-#options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; rv:122.0) Gecko/20100101 Firefox/122.0")
 driver = webdriver.Firefox(options=options)
 driver.implicitly_wait(2)
-
-
-# headers = {
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:122.0) Gecko/20100101 Firefox/122.0'
-# }
-# rs = requests.Session()
-# rs.cookies = ck
-# rs.headers = headers
-
 
 # Boostrap loop
 url = url_base + chapter_base + str(start_chapter)
@@ -96,16 +85,7 @@ while True:
 
     if not content or overwrite:
         print('getting', filename)
-        # response = rs.get(url)
-        # try:
-        #     response.raise_for_status()
-        # except requests.exceptions.HTTPError as e:
-        #     print(e)
-        #     sys.exit()
-        # driver.get(url)
-        # for c in cookies:
-        #     driver.add_cookie(c)
-        # print(driver.get_cookies())
+
         driver.get(url)
 
         WebDriverWait(driver, 20).until(EC.invisibility_of_element_located((By.XPATH, "//div[@class='shadow-chapter-lock']")))
@@ -116,15 +96,8 @@ while True:
         with open(dirname + filename, 'w') as f:
             f.write(content)
 
-    #soup = BeautifulSoup(content, 'lxml')
-    #next_el = soup.find('span', text='Next Chapter')
-    #if next_el is None:
-    #    print("No next chapter element found")
-    #    break
-    #else:
-
     i += 1
-    if i < end_chapter + 1:
+    if i <= end_chapter:
         url = url_base + chapter_base + str(i)
     else:
         print("Last chapter downloaded")
